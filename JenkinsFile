@@ -1,0 +1,26 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                git 'https://dmichalak1999@bitbucket.org/jenkins-santander-q1-24/greeting-demo-app.git'
+                bat './mvnw package'
+            }
+        }
+        stage('Report junit') {
+            steps {
+                junit 'target/surefire-reports/*.xml'
+            }
+        }
+        stage('Report jacoco') {
+            steps {
+                jacoco()
+            }
+        }
+         stage('Testing') {
+            steps {
+                echo "C:\Users\dmich\.jenkins\workspace\Greeting"
+            }
+        }
+    }
+}
