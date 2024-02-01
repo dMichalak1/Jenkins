@@ -1,7 +1,7 @@
 pipeline {
     agent any
     options {
-        timestamps()
+        timeout(time: 30, unit: 'SECONDS')
     }
     triggers {
         pollSCM 'H/2 * * * *'
@@ -11,7 +11,7 @@ pipeline {
             steps {
                 git branch: 'main', url: 'https://github.com/dMichalak1/Jenkins.git'
                 bat './mvnw package'
-                
+
             }
         }
         stage('Report junit') {
