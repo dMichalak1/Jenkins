@@ -4,7 +4,7 @@ pipeline {
         timeout(time: 60, unit: 'SECONDS')
     }
     triggers {
-        pollSCM 'H/1 * * * *'
+        pollSCM 'H/2 * * * *'
     }
     stages {
         stage('Build') {
@@ -14,6 +14,7 @@ pipeline {
 
             }
         }
+        stage('Report run') {
 parallel {
         stage('Report junit') {
             steps {
@@ -27,6 +28,7 @@ parallel {
             }
         }
     }
+        }
          
     }
 }
