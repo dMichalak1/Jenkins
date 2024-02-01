@@ -14,15 +14,19 @@ pipeline {
 
             }
         }
-        stage('Report run') {
+stage('Report run') {
 parallel {
         stage('Report junit') {
+            agent {
+                label 'localagent'
+            }
             steps {
                 junit 'target/surefire-reports/*.xml'
 
             }
         }
         stage('Report jacoco') {
+            agent any
             steps {
                 jacoco()
             }
