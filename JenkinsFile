@@ -3,13 +3,14 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://github.com/dMichalak1/Jenkins.git'
+                git branch: 'main', url: 'https://github.com/dMichalak1/Jenkins.git'
                 bat './mvnw package'
             }
         }
         stage('Report junit') {
             steps {
                 junit 'target/surefire-reports/*.xml'
+
             }
         }
         stage('Report jacoco') {
