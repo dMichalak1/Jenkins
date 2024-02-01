@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://dmichalak1999@bitbucket.org/jenkins-santander-q1-24/greeting-demo-app.git'
+                git 'https://github.com/dMichalak1/Jenkins.git'
                 bat './mvnw package'
             }
         }
@@ -17,10 +17,6 @@ pipeline {
                 jacoco()
             }
         }
-         stage('Testing') {
-            steps {
-                echo "C:\Users\dmich\.jenkins\workspace\Greeting"
-            }
-        }
+         
     }
 }
